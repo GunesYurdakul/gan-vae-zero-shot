@@ -22,7 +22,7 @@ We believe that being able to generate images using just a few samples will be v
 images
 
 ### 2.2. DesIGN: Design Inspiration from Generative Networks 
-We started our research with  DesIGN: Design Inspiration from Generative Networks paper, which is a very recent paper published by Facebook AI Research Team. The aim of the paper is to create creative and visually appealing fashion designs such as bags, t-shirts etc. using Generative Adverserial Networks. They use DCGAN architecture[*] is used and they propose two new loss functions classification loss (LDCLass) and creativity loss(LGCREAt)
+We started our research with  DesIGN: Design Inspiration from Generative Networks paper, which is a very recent paper published by Facebook AI Research Team. The aim of the paper is to create creative and visually appealing fashion designs such as bags, t-shirts etc. using Generative Adverserial Networks. They use DCGAN architecture[] is used and they propose two new loss functions classification loss (LDCLass) and creativity loss(LGCREAt)
 *images of functions
 Their creativity loss basically computes the Multi Class Cross Entropy(MCE) loss between the class prediction of the dis- criminator and the uniform distribution. The aim is to encourage deviation from existing classes such as shapes and textures in this paper. </br>
 #### Toy Dataset Results and Drawbacks
@@ -42,12 +42,35 @@ For different settings you can type:
     
     $ python3 STYLEGAN.py --help
 
-### 2.3. CGAN 
+### 2.3. CGAN
+*** cgan architecture ***
+[]
+We have experimented with CGAN using 8 Gaussians dataset. Since the generated samples are conditioned on labels and we have thought the latent space could represent the angle and distance to the center point, we were expecting to see some generated samples to be from the same distribution of missing label. However, the results were not as we expected. We were only able to generate samples from existing classes.
+
+*** results***
+#### Required Packages
+* Tensorflow []
+* Numpy
+* Matplotlib
+* seaborn
+
+#### Usage
+Simple CGAN model with 8 Gaussians dataset(default) can be run using the code below:
+
+    $ python CGAN.py --fig_name result_file_name --label --notebook --missing_mixt 4
+
+For different settings you can type:
+    
+    $ python3 CGAN.py --help
+    
 ### 2.4. INFOGAN
+[]
+***infogan model***
+
+Info
 ### 2.5. VAE
 ### 2.6. FIGR
 #### Meta-Learning
-### Comment on Results
 
 <a name="ref"></a>
 ## References
