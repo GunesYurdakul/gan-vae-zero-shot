@@ -64,11 +64,17 @@ For different settings you can type:
     $ python3 CGAN.py --help
     
 ### 2.4. INFOGAN
+***info gan model***
 []
+InfoGAN splits the Generator input to a noise vector and a latent vector. The aim is to maximize the Mutual Information between the code and the generator output. 
+
+We played with the latent feature vectors:
+***results***
+
 ***infogan model***
 
-Info
-### 2.5. VAE
+### 2.5. Variational AutoenVAE
+
 ### 2.6. FIGR
 #### Meta-Learning
 
