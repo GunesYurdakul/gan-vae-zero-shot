@@ -141,7 +141,8 @@ The generated samples if we remove the samples of trouser class can be seen belo
 
 <img src="readme-figs/2.5.pants.png" width="500" height="500" /> </br>
 
-However, when we removed sneakers class the interpolation gives better results. Since sneakers are shoes which are shorter than boots and longer than sandals, we were able to generate a lot of samples which look like sneakers.</br>
+However, when we removed sneakers class the interpolation gives better results. Since sneakers are shoes which are shorter than boots and longer than sandals, we were able to generate a lot of samples which look like sneakers.</br></br>
+
 <img src="readme-figs/2.5.sneakers.png" width="500" height="500"/>
 
 <a name="2.6"></a>
