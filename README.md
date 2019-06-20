@@ -199,9 +199,8 @@ We explored the latent space on both synthetic data(8 Gaussians) and images. Met
 
 <a name="ack"></a>
 ## Acknowledgements
-InfoGAN implementation has been based on nxlwm/pytorch-generative-model-collections.
-VAE implementation has been based on pytorch/examples.
-Both models tested with Pytorch 1.0.1 on macOSMojave Version 10.14 16.04.
-
+InfoGAN implementation has been based on nxlwm/pytorch-generative-model-collections.</br>
+VAE implementation has been based on pytorch/examples.</br>
+Both models tested with Pytorch 1.0.1 on macOSMojave Version 10.14 16.04.</br>
 
 
