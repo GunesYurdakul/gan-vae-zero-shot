@@ -35,9 +35,9 @@ We want to be able to generate samples in zero shot and/or few shot settings by 
 ### 2.2. DesIGN: Design Inspiration from Generative Networks 
 We started our research with  DesIGN: Design Inspiration from Generative Networks paper [3], which is a very recent paper published by Facebook AI Research Team. The aim of the paper is to create creative and visually appealing fashion designs such as bags, t-shirts etc. using Generative Adverserial Networks. They use DCGAN architecture[4] is used and they propose two new loss functions classification loss and creativity loss. </br>
 
+<img src="readme-figs/2.2.2.png" width="350" height="120"/>
 <img src="readme-figs/2.2.1.png" width="300" height="50"/>
-<img src="readme-figs/2.2.2.png"/>
-<img src="readme-figs/2.2.3.png" width="350" height="90" />
+<img src="readme-figs/2.2.3.png" width="350" height="100" />
 
 Their creativity loss basically computes the Multi Class Cross Entropy(MCE) loss between the class prediction of the dis- criminator and the uniform distribution. The aim is to encourage deviation from existing classes such as shapes and textures in this paper. </br>
 
@@ -49,6 +49,7 @@ Their creativity loss basically computes the Multi Class Cross Entropy(MCE) loss
 #### Usage
 You can run the code using STYLEGAN architecture with 8 Gaussians dataset(default) using the code below: </br >
 
+    $ cd 2D-codes
     $ python3 STYLEGAN.py --fig_name GAN_deneme --label  --notebook --lambda_g 0 --lambda_d 0 --missing_mixt 1
 For different settings you can type:
     
@@ -77,6 +78,7 @@ We have experimented with CGAN [5] using 8 Gaussians dataset. Since the generate
 #### Usage
 Simple CGAN model with 8 Gaussians dataset(default) can be run using the code below:
 
+    $ cd 2D-codes
     $ python CGAN.py --fig_name result_file_name --label --notebook --missing_mixt 4
 
 For different settings you can type:
@@ -92,7 +94,8 @@ InfoGAN [7] splits the Generator input to a noise vector and a latent vector. Th
 <img src="readme-figs/infogan.png" width="150" height="300" />
 </br>
 Simple InfoGAN model with 8 Gaussians dataset(default) can be run using the code below:
-
+    
+    $ cd infoGAN
     $ python3 main.py --gan-type infoGAN --dataset mnist --missing-mixt 3
 
 
@@ -120,6 +123,7 @@ We decided to experiment with VAEs as well. Manipulating the latent feature vect
 
 VAE model with fashion-mnist dataset(default) can be run using the code below:
 
+    $ cd vae
     $  python3 VAE.py --dataset fashion-mnist --encoding-vector-size 2 --remove-label 3 --few-shot 4 
 
 For different settings you can type:
@@ -131,7 +135,13 @@ For different settings you can type:
 * By using --dataset option, you can select any of 'mnist', 'bags','fashion-mnist','8Gaussians', 'cifar10', 'cifar100', 'svhn', 'stl10', 'lsun-bed' datasets. 
 
 <img src="readme-figs/2.5.png" />
-<img src="readme-figs/2.5.pants.png" width="500" height="500" />
+</br>
+
+The generated samples if we remove the samples of trouser class can be seen below. Encoding vector has size 2, so you can clearly see the interpolation. In this model, we can't see any trouser sample in generated samples as expected. </br>
+
+<img src="readme-figs/2.5.pants.png" width="500" height="500" /> </br>
+
+However, when we removed sneakers class the interpolation gives better results. Since sneakers are shoes which are shorter than boots and longer than sandals, we were able to generate a lot of samples which look like sneakers.</br>
 <img src="readme-figs/2.5.sneakers.png" width="500" height="500"/>
 
 <a name="2.6"></a>
@@ -157,6 +167,7 @@ Their result can be seen below. Since training takes a lot of time, I used the i
 <img src="readme-figs/2.6.png" />
 </br>
 In few shot setting results, the generated samples seem to be almost the copies of the given 4 samples. There is not much diversity in generations.</br>
+
 After observing this, we decided to test if even a very simple VAE with 3 latent features in the encoded vector could generate more diversity among generated samples in one-shot and few-shot settings.</br>
 
 <img src="readme-figs/2.6.pants.png" />
