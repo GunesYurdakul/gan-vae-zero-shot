@@ -61,9 +61,11 @@ However, our results have showed that although some of the generated samples wer
 
 <a name="2.3"></a>
 ### 2.3. CGAN
-*** cgan architecture ***
-We have experimented with CGAN [5] using 8 Gaussians dataset. Since the generated samples are conditioned on labels and we have thought the latent space could represent the angle and distance to the center point, we were expecting to see some generated samples to be from the same distribution of missing label. However, the results were not as we expected. We were only able to generate samples from existing classes.
 
+We have experimented with CGAN [5] using 8 Gaussians dataset. Since the generated samples are conditioned on labels and we have thought the latent space could represent the angle and distance to the center point, we were expecting to see some generated samples to be from the same distribution of missing label. However, the results were not as we expected. We were only able to generate samples from existing classes.</br>
+
+<img src="readme-figs/cgan.png" width="150" height="300" />
+</br>
 #### Required Packages
 * Tensorflow [6]
 * Numpy
@@ -83,13 +85,23 @@ For different settings you can type:
 
 <a name="2.4"></a>  
 ### 2.4. InfoGAN
-***info gan model***
-InfoGAN [7] splits the Generator input to a noise vector and a latent vector. The aim is to maximize the Mutual Information between the code and the generator output. 
+
+InfoGAN [7] splits the Generator input to a noise vector and a latent vector. The aim is to maximize the Mutual Information between the code and the generator output. </br>
+<img src="readme-figs/infogan.png" width="150" height="300" />
+</br>
+Simple InfoGAN model with 8 Gaussians dataset(default) can be run using the code below:
+
+    $ python3 main.py --gan-type infoGAN --dataset mnist --missing-mixt 3
+
+
+For different settings you can type:
+    
+    $ python3 main.py --help
 
 We played with the latent feature vectors:
 <img src="readme-figs/2.4.png" />
 
-***infogan model***
+
 <a name="2.5"></a>
 ### 2.5. Variational Autoencoders (VAEs)
 We decided to experiment with VAEs as well. Manipulating the latent feature vectors of VAEs works well compared to AEs, since their latent spaces are continuous and therefore lets us to easily do random sampling and interpolation[2].</br>
