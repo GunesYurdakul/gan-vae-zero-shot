@@ -47,7 +47,7 @@ However, our results have showed that although some of the generated samples wer
 
 
 #### Required Packages
-* Tensorflow []
+* Tensorflow [6]
 * Numpy
 * Matplotlib
 
@@ -101,11 +101,9 @@ We decided to experiment with VAEs as well. Manipulating the latent feature vect
 
 #### Usage
 
-Simple CGAN model with 8 Gaussians dataset(default) can be run using the code below:
+VAE model with fashion-mnist dataset(default) can be run using the code below:
 
     $  python3 VAE.py --dataset fashion-mnist --encoding-vector-size 2 --remove-label 3 --few-shot 4 
-
-
 
 For different settings you can type:
     
