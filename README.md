@@ -96,7 +96,7 @@ InfoGAN [7] splits the Generator input to a noise vector and a latent vector. Th
 Simple InfoGAN model with 8 Gaussians dataset(default) can be run using the code below:
     
     $ cd infoGAN
-    $ python3 main.py --gan-type infoGAN --dataset mnist --missing-mixt 3
+    $ python3 main.py --gan_type infoGAN --dataset mnist --missing_mixt 3
 
 
 For different settings you can type:
