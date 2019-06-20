@@ -32,9 +32,13 @@ We started our research with  DesIGN: Design Inspiration from Generative Network
 
 Their creativity loss basically computes the Multi Class Cross Entropy(MCE) loss between the class prediction of the dis- criminator and the uniform distribution. The aim is to encourage deviation from existing classes such as shapes and textures in this paper. </br>
 #### Toy Dataset Results and Drawbacks
-We wanted to observe how their algorithm will work using a toy dataset with 2 features (8 Gaussians). We did some experiments by removing samples of one or more labels. We were curious if the generated samples will be close to the removed samples. However, our results have showed that although some of the generated samples were inbetween gaussian mixtures of given training samples, none of the generated samples were anywhere close to the missing label. 
+We wanted to observe how their algorithm will work using a toy dataset with 2 features (8 Gaussians). We did some experiments by removing samples of one or more labels. We were curious if the generated samples will be close to the removed samples. </br>
+However, our results have showed that although some of the generated samples were inbetween gaussian mixtures of given training samples, none of the generated samples were anywhere close to the missing label. Additionally, their creativity evaluation metric can be very subjective, since they are mainly using a human evaluation(survey).They claim that Mean nearest neighbors distance score is used to evaluate creativity, but it is a very vague method, since if the samples are too close to the real samples then it means there is almost no creativity and if they are too far the generated samples might look unrealistic. 
+  
 
 **** RESULTS ****
+
+
 #### Required Packages
 * Tensorflow []
 * Numpy
