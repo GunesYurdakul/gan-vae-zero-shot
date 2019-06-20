@@ -33,9 +33,10 @@ We want to be able to generate samples in zero shot and/or few shot settings by 
 </br>
 <a name="2.2"></a>
 ### 2.2. DesIGN: Design Inspiration from Generative Networks 
-We started our research with  DesIGN: Design Inspiration from Generative Networks paper [3], which is a very recent paper published by Facebook AI Research Team. The aim of the paper is to create creative and visually appealing fashion designs such as bags, t-shirts etc. using Generative Adverserial Networks. They use DCGAN architecture[4] is used and they propose two new loss functions classification loss (LDCLass) and creativity loss(LGCREAt) </br>
+We started our research with  DesIGN: Design Inspiration from Generative Networks paper [3], which is a very recent paper published by Facebook AI Research Team. The aim of the paper is to create creative and visually appealing fashion designs such as bags, t-shirts etc. using Generative Adverserial Networks. They use DCGAN architecture[4] is used and they propose two new loss functions classification loss and creativity loss. </br>
 
-<img src="readme-figs/2.2.2.png" width="250" height="30" />
+<img src="readme-figs/2.2.1.png" width="300" height="50"/>
+<img src="readme-figs/2.2.2.png"/>
 <img src="readme-figs/2.2.3.png" width="350" height="90" />
 
 Their creativity loss basically computes the Multi Class Cross Entropy(MCE) loss between the class prediction of the dis- criminator and the uniform distribution. The aim is to encourage deviation from existing classes such as shapes and textures in this paper. </br>
