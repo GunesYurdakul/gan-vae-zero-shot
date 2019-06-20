@@ -100,6 +100,7 @@ class infoGAN(object):
         self.sample_num = self.len_discrete_code ** 2
 
         # load dataset
+        #remove samples for zero-shot
         self.data_loader = dataloader(self.dataset, self.input_size, self.batch_size, self.missing_mixt)
         self.data_batch = self.data_loader.__iter__().__next__()
         data = self.data_batch[0]

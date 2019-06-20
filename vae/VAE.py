@@ -61,16 +61,18 @@ elif args.dataset == 'fashion-mnist':
         batch_size=args.batch_size, shuffle=True, **kwargs)
     if args.remove_label!=-1:
         print('remove label')
+#remove samples for zero shot
 zero_shot_data = train_loader.dataset.data[train_loader.dataset.targets != args.remove_label]
 zero_shot_label = train_loader.dataset.targets[train_loader.dataset.targets != args.remove_label]
 
 if args.few_shot>0:
-
+    #get samples of removed class
     one_shot_data = train_loader.dataset.data[train_loader.dataset.targets == args.remove_label]
     one_shot_label = train_loader.dataset.targets[train_loader.dataset.targets == args.remove_label]
     save_image(one_shot_data[:args.few_shot].view(args.few_shot, 1, 28, 28),
                'results/mnist_1_samples_repeated_removed_label_' + str(args.remove_label) + '.png')
     for i in range(1000):
+        #add the same first args.few_shot samples of removed label many times
         zero_shot_data = torch.cat((zero_shot_data, one_shot_data[:args.few_shot]), 0)
         zero_shot_label=torch.cat((zero_shot_label, one_shot_label[:args.few_shot]), 0)
 
@@ -79,9 +81,8 @@ if args.few_shot>0:
 else:
     train_loader.dataset.data = zero_shot_data
     train_loader.dataset.targets = zero_shot_label
-        #test_loader.dataset.data = test_loader.dataset.data[test_loader.dataset.targets != args.remove_label]
-        #test_loader.dataset.targets = test_loader.dataset.targets[test_loader.dataset.targets != args.remove_label]
 
+#VAE model
 class VAE(nn.Module):
     def __init__(self):
         super(VAE, self).__init__()
