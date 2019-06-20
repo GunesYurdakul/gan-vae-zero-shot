@@ -66,6 +66,7 @@ We have experimented with CGAN [5] using 8 Gaussians dataset. Since the generate
 
 <img src="readme-figs/cgan.png" width="150" height="300" />
 </br>
+
 #### Required Packages
 * Tensorflow [6]
 * Numpy
