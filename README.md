@@ -28,23 +28,17 @@ We believe that being able to generate images using just a few samples will be v
 <a name="2.1"></a>
 ### 2.1. Our Aim
 
-We want to be able to generate samples in zero shot and/or few shot settings by manipulating latent features of generative models.
-
-*** figure ***
+We want to be able to generate samples in zero shot and/or few shot settings by manipulating latent features of generative models.</br>
+<img src="readme-figs/2.1.png" width="600" height="400" />
+</br>
 <a name="2.2"></a>
 ### 2.2. DesIGN: Design Inspiration from Generative Networks 
 We started our research with  DesIGN: Design Inspiration from Generative Networks paper [3], which is a very recent paper published by Facebook AI Research Team. The aim of the paper is to create creative and visually appealing fashion designs such as bags, t-shirts etc. using Generative Adverserial Networks. They use DCGAN architecture[4] is used and they propose two new loss functions classification loss (LDCLass) and creativity loss(LGCREAt) </br>
 
-*images of functions
+<img src="readme-figs/2.2.2.png" width="250" height="30" />
+<img src="readme-figs/2.2.3.png" width="350" height="90" />
 
 Their creativity loss basically computes the Multi Class Cross Entropy(MCE) loss between the class prediction of the dis- criminator and the uniform distribution. The aim is to encourage deviation from existing classes such as shapes and textures in this paper. </br>
-#### Toy Dataset Results and Drawbacks
-We wanted to observe how their algorithm will work using a toy dataset with 2 features (8 Gaussians). We did some experiments by removing samples of one or more labels. We were curious if the generated samples will be close to the removed samples. </br>
-However, our results have showed that although some of the generated samples were inbetween gaussian mixtures of given training samples, none of the generated samples were anywhere close to the missing label. Additionally, their creativity evaluation metric can be very subjective, since they are mainly using a human evaluation(survey).They claim that Mean nearest neighbors distance score is used to evaluate creativity, but it is a very vague method, since if the samples are too close to the real samples then it means there is almost no creativity and if they are too far the generated samples might look unrealistic. 
-  
-
-**** RESULTS ****
-
 
 #### Required Packages
 * Tensorflow [6]
@@ -58,12 +52,18 @@ You can run the code using STYLEGAN architecture with 8 Gaussians dataset(defaul
 For different settings you can type:
     
     $ python3 STYLEGAN.py --help
+    
+#### Toy Dataset Results and Drawbacks
+We wanted to observe how their algorithm will work using a toy dataset with 2 features (8 Gaussians). We did some experiments by removing samples of one or more labels. We were curious if the generated samples will be close to the removed samples. </br>
+However, our results have showed that although some of the generated samples were inbetween gaussian mixtures of given training samples, none of the generated samples were anywhere close to the missing label. Additionally, their creativity evaluation metric can be very subjective, since they are mainly using a human evaluation(survey).They claim that Mean nearest neighbors distance score is used to evaluate creativity, but it is a very vague method, since if the samples are too close to the real samples then it means there is almost no creativity and if they are too far the generated samples might look unrealistic. </br>
+  
+<img src="readme-figs/2.2.4.png" width="600" height="400" />
+
 <a name="2.3"></a>
 ### 2.3. CGAN
 *** cgan architecture ***
 We have experimented with CGAN [5] using 8 Gaussians dataset. Since the generated samples are conditioned on labels and we have thought the latent space could represent the angle and distance to the center point, we were expecting to see some generated samples to be from the same distribution of missing label. However, the results were not as we expected. We were only able to generate samples from existing classes.
 
-*** results***
 #### Required Packages
 * Tensorflow [6]
 * Numpy
@@ -78,13 +78,16 @@ Simple CGAN model with 8 Gaussians dataset(default) can be run using the code be
 For different settings you can type:
     
     $ python3 CGAN.py --help
+
+<img src="readme-figs/2.3.png" />
+
 <a name="2.4"></a>  
 ### 2.4. InfoGAN
 ***info gan model***
 InfoGAN [7] splits the Generator input to a noise vector and a latent vector. The aim is to maximize the Mutual Information between the code and the generator output. 
 
 We played with the latent feature vectors:
-***results***
+<img src="readme-figs/2.4.png" />
 
 ***infogan model***
 <a name="2.5"></a>
@@ -113,6 +116,10 @@ For different settings you can type:
 * --few-shot sets the number of shots in few-shot setting, but to use this setting --removel-label should also be set.
 * By using --dataset option, you can select any of 'mnist', 'bags','fashion-mnist','8Gaussians', 'cifar10', 'cifar100', 'svhn', 'stl10', 'lsun-bed' datasets. 
 
+<img src="readme-figs/2.5.png" />
+<img src="readme-figs/2.5.pants.png" width="500" height="500" />
+<img src="readme-figs/2.5.sneakers.png" width="500" height="500"/>
+
 <a name="2.6"></a>
 ### 2.6. FIGR: Few-shot Image Generation with Reptile
 FIGR [8] is a GAN model which is  meta-trained with Reptile[9]. This paper has shown its a potential in recent years since good meta-learning models are able to generalize to new tasks during test time by just a limited number of exposure to a new samples of a new task. </br>
@@ -132,15 +139,19 @@ For different settings you can type:
 
 The architecture presented in the paper takes about 125 hours to train eveon on a 125 hours Tesla V100 on Google Cloud Platform (GCP). Their model is computationally very expensive since they are using Wasserstein Loss [10] with Gradient Penalty  and also Residual neural networks. I used the code they provided but removed wasser stein loss and used DCGAN. </br>
 They use human evaluation to test if the image scan fool the can fool human judges. However, they present no evaluation result on novelty or creativity of created images.</br>
-***their result*** </br>
+Their result can be seen below. Since training takes a lot of time, I used the image on the paper.
+<img src="readme-figs/2.6.png" />
+</br>
 In few shot setting results, the generated samples seem to be almost the copies of the given 4 samples. There is not much diversity in generations.</br>
 After observing this, we decided to test if even a very simple VAE with 3 latent features in the encoded vector could generate more diversity among generated samples in one-shot and few-shot settings.</br>
-*** pants result***
-We added the same trouser sample to dataset as many times so that almost same number of samples from each class exists. 
+
+<img src="readme-figs/2.6.pants.png" />
+We added the same trouser sample is added to our zero-shot dataset as many times so that almost same number of samples from each class exists. 
 As you can see even a simple VAE which has only seen one sample of a trouser is able to generate trousers with different widths and shades. 
 
-*** 9 digit results***
-We added the same 4 samples to dataset as many times so that almost same number of samples from each class exists. As in their example, our simple VAE has only seen four types of samples of digit '9' and it is able to generate more creative samples than their result.</br>
+<img src="readme-figs/2.6.my9.png" />
+<img src="readme-figs/2.6.my9interp.png" width="800" height="800"/>
+We added the same 4 samples to the dataset as many times so that almost same number of samples from each class exists. As in their example, our simple VAE has only seen four types of samples of digit '9' and it is able to generate more creative samples than their result.</br>
 
 <a name="conclusion"></a>
 ## 3. Conclusion
