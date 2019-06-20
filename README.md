@@ -107,6 +107,7 @@ We played with the latent feature vectors:
 <img src="readme-figs/2.4.png" />
 
 
+
 <a name="2.5"></a>
 ### 2.5. Variational Autoencoders (VAEs)
 We decided to experiment with VAEs as well. Manipulating the latent feature vectors of VAEs works well compared to AEs, since their latent spaces are continuous and therefore lets us to easily do random sampling and interpolation[2].</br>
@@ -195,3 +196,12 @@ We explored the latent space on both synthetic data(8 Gaussians) and images. Met
 [8] Clouâtre, L., & Demers, M. (2019). FIGR: Few-shot Image Generation with Reptile. arXiv preprint arXiv:1901.02199.</br>
 [9] Nichol, A., Achiam, J., & Schulman, J. (2018). On first-order meta-learning algorithms. arXiv preprint arXiv:1803.02999.</br>
 [10] Arjovsky, M., Chintala, S., & Bottou, L. (2017, July). Wasserstein generative adversarial networks. In International Conference on Machine Learning (pp. 214-223).</br>
+
+<a name="ack"></a>
+## Acknowledgements
+InfoGAN implementation has been based on nxlwm/pytorch-generative-model-collections.
+VAE implementation has been based on pytorch/examples.
+Both models tested with Pytorch 1.0.1 on macOSMojave Version 10.14 16.04.
+
+
+
